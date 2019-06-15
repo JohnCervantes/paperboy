@@ -1,0 +1,67 @@
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+
+<div class="container" style="background-image:url(../images/registerbackground.jpg); background-repeat:repeat; width:100%; margin:0; padding:0;">
+    <br />
+    <h2 style="text-align:center;">@ViewData["Title"] in 3 steps</h2>
+    <img src="~/images/arrow0.png" class="center-block img-responsive" width="600" height="100" />
+    <div class="row" style="width:100%;margin:0; padding: 0;">
+        <br />
+        <div class="panel panel-primary center-block" style="background-color: #CCFFCC; ;width: 50%; border-radius: 12px;">
+            <div class="panel-heading" style="text-align:center; color:white; border-top-left-radius: 12px; border-top-right-radius: 12px;font-weight:bold; font-family: Papyrus; font-size:20px; line-height:30px;">REGISTER</div>
+            <div class="panel-body">
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Input.FirstName"></label>
+                        <input asp-for="Input.FirstName" class="form-control" placeholder="First Name" />
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.LastName"></label>
+                        <input asp-for="Input.LastName" class="form-control" placeholder="Last Name" />
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Email"></label>
+                        <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Password"></label>
+                        <input asp-for="Input.Password" class="form-control" placeholder="Password" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.ConfirmPassword"></label>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" asp-for="Input.imgPth" class="form-control" value="\Temp\default.png" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary center-block" style="width:200px auto; height:50px; border-radius: 12px;">Register</button>
+                </div>
+                        </form>
+            </div>
+        </div>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+</div>
+    @section Scripts {
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+    }

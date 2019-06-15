@@ -1,0 +1,27 @@
+@using Microsoft.AspNetCore.Identity
+@using PaperBoyMain0.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+   
+        <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a asp-page="/Account/Manage/Index" style="color:white;"  title="Manage">Hello @UserManager.Users.Where(p=>p.Id.Equals(UserManager.GetUserId(User))).Select(p=>p.FirstName).FirstOrDefault()!</a>
+                </li>
+                <li>
+                    <button type="submit" style="color:white;" class="btn btn-link navbar-btn navbar-link">Log out</button>
+                </li>
+            </ul>
+        </form>
+    
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a style="color:white;" asp-page="/Account/Register">Register</a></li>
+        <li><a style="color:white;" asp-page="/Account/Login">Log in</a></li>
+    </ul>
+}

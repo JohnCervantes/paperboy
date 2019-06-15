@@ -1,0 +1,41 @@
+﻿@page
+@model ContactModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="row" style="width:100%; padding-top:85px; padding-bottom:85px; margin:0;background-image:url(images/registerbackground.jpg); background-repeat:repeat;">
+   <div class="center-block" style="width: 50%; text-align:center;">
+        <div class="col-sm-5" style="background-color:#5E9DC8; height:400px; border-bottom-left-radius:12px; border-top-left-radius:12px; margin:0; padding:0;">
+            <br />
+            <img class="center-block" src="~/images/bubble.png" height="300" width="250" />
+            <br />
+            <img class="center-block" src="~/images/paperboyfont.png" height="55" width="230" />
+        </div>
+        <div class="col-sm-7" style="background-color:#5E9DC8; border-bottom-right-radius:12px; border-top-right-radius:12px; font-family:'Century Gothic'; height:400px; margin:0;padding:0;">
+            <br />
+            <p style="font-weight:bold; font-family: Papyrus; font-size:20px; line-height:30px;">@ViewData["Title"]</p
+<br />
+            
+            <h4 style="font-weight:bold;">Corporate Headquarters</h4>
+            <address>
+                7657 West Strong<br />
+                Norridge, IL 60706<br />
+            </address>
+            <h4 style="font-weight:bold;">Contact Numbers</h4>
+            <address>
+                <abbr title="Phone">P:</abbr>
+                312.989.7342
+                </address>
+               
+                <h4 style="font-weight:bold;">Contact via email</h4>
+                <address>
+                    <strong>Support:</strong> <a href="mailto:Support@example.com">JohnCervantes@protonmail.com</a><br />
+                    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">JohnCervantes@protonmail.com</a>
+                </address>
+        </div>
+        </div>
+    </div>
+
+
+

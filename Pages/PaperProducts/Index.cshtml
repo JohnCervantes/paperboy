@@ -1,0 +1,147 @@
+@page
+@model PaperBoyMain0.Pages.PaperProducts.IndexModel
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+    <p style="font-weight:bold; font-family: Papyrus; font-size:20px; line-height:30px; margin-left: 30px; margin-top:30px;">Browse Our Products</p>
+
+    <form>
+        <p style="text-align:center;">
+            <input type="text" name="searchString" size="60" style="height:34px;">
+            <button type="submit" class="btn btn-info" value="Search"><span class="glyphicon glyphicon-search"></span> Search</button>
+        </p>
+    </form>
+
+    @if (SignInManager.IsSignedIn(User) && @UserManager.GetUserName(User) == "admin@admin.com")
+    {
+        <br />
+        <a asp-page="./Create" style="float:right; margin-right:20px;">
+            <img src="~/images/admin.png" class="img-responsive" style="float:left; margin-right:5px;" alt="admin icon" height="20" width="20"><input type="button" value="Create New Product" style="color:black;" />
+        </a>
+    }
+
+    <br />
+
+    <table class="table" style="padding-bottom:0; margin-bottom:0;">
+        <thead>
+            <tr>
+                <th width="310px"></th>
+                <th width="250px;" style="padding-left:20px;">
+                    @Html.DisplayNameFor(model => model.PaperProduct[0].title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaperProduct[0].rating)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaperProduct[0].price);
+
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.PaperProduct.Count; i++)
+        {
+            @if (i % 2 == 0)
+            {
+        <tr style="background-color: #DCF0F7">
+            <td><img src="~/images/@Model.PaperProduct[i].imgPath" class="img-thumbnail center-block" alt="product's thumbnail image" height="200" width="300" /></td>
+            <td style="font-weight:bold; padding-left:20px;">
+                @Model.PaperProduct[i].title
+            </td>
+            <td>
+                @Model.PaperProduct[i].rating
+            </td>
+            <td>
+                $@string.Format("{0:n}", @Model.PaperProduct[i].price)
+            </td>
+
+            <td style="color: forestgreen; font-weight:bold">
+                @Model.PaperProduct[i].stock
+            </td>
+            <td>
+                @if (SignInManager.IsSignedIn(User) && @UserManager.GetUserName(User) == "admin@admin.com")
+        {
+            <div>
+                <img src="~/images/admin.png" class="img-responsive" style="float:left; margin-right:5px;" alt="admin icon" height="20" width="20">
+                <a asp-page="./Edit" asp-route-id="@Model.PaperProduct[i].ID">Edit |</a>
+                <a asp-page="./Details" asp-route-id="@Model.PaperProduct[i].ID">Details |</a>
+                <a asp-page="./Delete" asp-route-id="@Model.PaperProduct[i].ID">Delete</a>
+            </div>
+}
+else
+{
+        <div>
+            <span style="float:left;">
+                <form>
+                    <a asp-page="./Details" asp-route-id="@Model.PaperProduct[i].ID"><input type="button" value="View Details" class="btn btn-info" style="color:white;" /></a> &nbsp; &nbsp; &nbsp; &nbsp;
+                </form>
+            </span>
+            <span style="float:inherit;">
+                @Html.Raw(@Model.PaperProduct[i].purchaseLink)
+            </span>
+        </div>
+}
+            </td>
+        </tr>
+            }
+            else
+            {
+                <tr style="background-color:#5E9DC8">
+                    <td><img src="~/images/@Model.PaperProduct[i].imgPath" class="img-thumbnail center-block" alt="product's thumbnail image" height="200" width="300" /></td>
+                    <td style="font-weight:bold; padding-left:20px;">
+                        @Model.PaperProduct[i].title
+                    </td>
+                    <td style="margin-left:0; padding-left:0;">
+                        @Model.PaperProduct[i].rating
+                    </td>
+                    <td>
+                        $@string.Format("{0:n}", @Model.PaperProduct[i].price)
+                    </td>
+
+                    <td style="color: forestgreen; font-weight:bold">
+                        @Model.PaperProduct[i].stock
+                    </td>
+                    <td>
+                        @if (SignInManager.IsSignedIn(User) && @UserManager.GetUserName(User) == "admin@admin.com")
+        {
+                <div>
+                    <img src="~/images/admin.png" class="img-responsive" style="float:left; margin-right:5px;" alt="admin icon" height="20" width="20">
+                    <a asp-page="./Edit" asp-route-id="@Model.PaperProduct[i].ID">Edit |</a>
+                    <a asp-page="./Details" asp-route-id="@Model.PaperProduct[i].ID">Details |</a>
+                    <a asp-page="./Delete" asp-route-id="@Model.PaperProduct[i].ID">Delete</a>
+                </div>
+}
+else
+{
+                <div>
+                    <span style="float:left;">
+                        <form>
+                            <a asp-page="./Details" asp-route-id="@Model.PaperProduct[i].ID"><input type="button" value="View Details" class="btn btn-info" style="color:white;" /></a> &nbsp; &nbsp; &nbsp; &nbsp;
+                        </form>
+                    </span>
+                    <span style="float:inherit;">
+                        @Html.Raw(@Model.PaperProduct[i].purchaseLink)
+                    </span>
+                </div>
+}
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>
+
+
+
+

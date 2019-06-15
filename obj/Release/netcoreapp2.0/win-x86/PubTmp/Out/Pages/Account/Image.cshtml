@@ -1,0 +1,46 @@
+﻿@page
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model PaperBoyMain0.Pages.Account.ImageModel
+@{
+    ViewData["Title"] = "Image";
+}
+
+
+<div class="row" style="width:100%; margin:0; padding:0; background-image:url(../images/registerbackground.jpg); background-repeat:repeat; width:100%; margin:0; padding:0;">
+    <div class="col-md-12" style="text-align:center;">
+
+        <br />
+
+        <h2 style="text-align:center; font-weight:bold;">Choose your Profile Picture</h2>
+        <img src="~/images/arrow1.png" class="center-block" width="600" height="100" />
+        <br />
+        <div class="panel panel-primary center-block" style="background-color: #CCFFCC; ;width: 50%; border-radius: 12px;">
+            <div class="panel-heading" style="text-align:center; color:white; border-top-left-radius: 12px; border-top-right-radius: 12px; font-weight:bold; font-family: Papyrus; font-size:20px; line-height:30px;">PROFILE PICTURE</div>
+            <div class="panel-body">
+                <br />
+                <img src="@Model.imgPth" class="img-responsive center-block" style="border: 1px solid black" width="300" />
+                <br />
+                <form enctype="multipart/form-data" asp-page-handler="upload" method="post">
+                    <div class="form-group">
+                        <p>*Allowed files: .jpeg, .jpg and .png</p>
+                        <input type="file" class="center-block" name="File" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Preview" />
+                    </div>
+                </form>
+                <br />
+                <br />
+                <form>
+                    <a asp-page="./RegisterSuccesss"><input type="button" class="btn-primary" value="Continue" style="color:white; width:200px; height:50px; border-radius: 12px;" /></a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

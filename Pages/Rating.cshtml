@@ -1,0 +1,54 @@
+﻿@page
+@model PaperBoyMain0.Pages.RatingModel
+@{
+    ViewData["Title"] = "Rating";
+}
+
+
+
+<div class="row" style="width:100%; padding-bottom:50px; margin:0;background-image:url(images/registerbackground.jpg); background-repeat:repeat;">
+    <div class="col-sm-12">
+        <br />
+        @Html.Partial("Account/Manage/_StatusMessage", Model.StatusMessage)
+        <br />
+        <div class="center-block" style="width: 70%;background-color:#5E9DC8; text-align:center; font-family:'Century Gothic'; border-radius:12px;">
+            <br />
+            <form method="post">
+
+                <p style="font-weight:bold;font-family: Papyrus; font-size:20px; line-height:30px;">Rate Website</p>
+                <br />
+                <p>Do you have any concerns, suggestions or feedback with regards to the website? Any feedback would be great on how it looks and feels. Your comment will also get featured at the front page. Thank you and have a nice day!</p>
+                <br />
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group">
+                    1 <input asp-for="@Model.input.Rating" type="radio" id="Rank" value="1" /> &nbsp;&nbsp;
+                    2 <input asp-for="@Model.input.Rating" type="radio" id="Rank" value="2" /> &nbsp;&nbsp;
+                    3 <input asp-for="@Model.input.Rating" type="radio" id="Rank" value="3" /> &nbsp;&nbsp;
+                    4 <input asp-for="@Model.input.Rating" type="radio" id="Rank" value="4" /> &nbsp;&nbsp;
+                    5 <input asp-for="@Model.input.Rating" type="radio" id="Rank" value="5" /> &nbsp;&nbsp;
+                    <br />
+                    <span asp-validation-for="@Model.input.Rating" class="text-danger"></span>
+                </div>
+                <br />
+                <br />
+
+                <div class="form-group center-block" style="width:50%;">
+                    <textarea asp-for="@Model.input.Comment" class="form-control" placeholder="Enter your comment here. . ." id="exampleFormControlTextarea1" rows="4"></textarea>
+                    <span asp-validation-for="@Model.input.Comment" class="text-danger"></span>
+                </div>
+
+                <br />
+                <br />
+
+                <button type="submit" class="btn btn-primary center-block" style="width:200px; height:50px; border-radius: 12px;">Submit</button>
+            </form>
+            <br />
+        </div>
+    </div>
+</div>
+
+
+
+
+

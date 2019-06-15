@@ -1,0 +1,24 @@
+﻿@{ 
+    Layout = "/Pages/_Layout.cshtml";
+}
+
+<h2 style="text-align:center">Manage your account</h2>
+
+<div>
+    <h4 style="text-align:center">Change your account settings</h4>
+    <hr />
+    <div class="row" style="width:100%; padding: 0; margin: 0;">
+        <div class="col-md-3">
+            @await Html.PartialAsync("_ManageNav")
+        </div>
+        <div class="col-md-9" style="border-left: 1px solid black; border-bottom: 1px solid black">
+            @RenderBody()
+        </div>
+    </div>
+    <br />
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
+        

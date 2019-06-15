@@ -1,0 +1,69 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h4>@ViewData["Title"]</h4>
+<hr />
+
+@Html.Partial("_StatusMessage", Model.StatusMessage)
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <label class="center-block" style="text-align:center;">Profile Picture</label>
+            <img src="@Model.imgPth" class="img-responsive center-block" style="border: 1px solid black" width="300" />
+            <br />
+            <div class="form-group">
+                <p style="text-align:center;">*Allowed files: .jpeg, .jpg and .png</p>
+                <input type="submit" style="float:right;" value="Preview" />
+                <input type="file" class="center-block" name="File" />
+            </div> 
+            <div class="form-group">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                @if (Model.IsEmailConfirmed)
+        {
+            <div class="input-group">
+                <input asp-for="Input.Email" class="form-control" />
+                <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+            </div>
+}
+else
+{
+        <input asp-for="Input.Email" class="form-control" />
+        <button asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+}
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.FirstName"></label>
+                <input asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.LastName"></label>
+                <input asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PhoneNumber"></label>
+                <input asp-for="Input.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <br />
+            <button type="submit" class="btn btn-primary center-block" style="color:white; width:200px; height:50px; border-radius: 12px;">Save</button>
+        </form>
+            <br />
+</div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

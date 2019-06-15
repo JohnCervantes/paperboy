@@ -1,0 +1,91 @@
+@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+
+<div class="row" style="width:100%;margin:0; padding: 50px; background-image:url(/images/registerbackground.jpg); background-repeat:repeat;">
+    <div class="col-md-4">
+        <section>
+                <div class="panel panel-primary center-block" style="background-color: #CCFFCC;border-radius: 12px;">
+                    <div class="panel-heading" style="text-align:center; color:white; border-top-left-radius: 12px; border-top-right-radius: 12px; font-weight:bold; font-family: Papyrus; font-size:20px; line-height:30px;">LOG IN</div>
+                    <div class="panel-body">
+                       
+                        <form method="post">
+                            <h4>Use a local account to log in.</h4>
+                            <br />
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Input.Email"></label>
+                                <input asp-for="Input.Email" class="form-control" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password"></label>
+                                <input asp-for="Input.Password" class="form-control" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label asp-for="Input.RememberMe">
+                                        <input asp-for="Input.RememberMe" />
+                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default">Log in</button>
+                            </div>
+                            <div class="form-group">
+                                <p>
+                                    <a asp-page="./ForgotPassword">Forgot your password?</a>
+                                </p>
+                                <p>
+                                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                                </p>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+</section>
+    </div>
+    <div class="col-md-6 col-md-offset-2" style="background-color:#CCFFFF; border-radius:12px; padding:30px;">
+        <section>
+            <h4 style="font-weight:bold;">Don't have time to register? Use these sample accounts:</h4>
+            <h4 style="font-weight:bold;">Admin Account:</h4>
+            <p>
+                username: admin@admin.com <br />
+                password: $Abc123
+            </p>
+
+            <h4 style="font-weight:bold;">An admin can:</h4>
+            <ul style="color:red; font-size:14px;">
+                <li><span style="color:black" ;>Create,Read,Update and Delete a product (CRUD)</span></li>
+            </ul>
+            <br />
+            <h4 style="font-weight:bold;">Registered User Account:</h4>
+             <p>
+                username: test@test.com <br />
+                password: $Abc123
+            </p>
+
+            <h4 style="font-weight:bold;">A registered user can:</h4>
+            <ul style="color:red; font-size:14px;">
+                <li><span style="color:black;">Create a feedback about the website</span></li>
+                <li><span style="color:black;">Has access to some exclusive pages</span></li>
+                <li><span style="color:black;">Can purchase any products</span></li>
+                <li><span style="color:black;">More perks are planned to be implemented soon!</span></li>
+            </ul>
+
+
+
+
+        </section>
+    </div> 
+</div>
+
+@section Scripts {
+    @await  Html.PartialAsync("_ValidationScriptsPartial")
+}

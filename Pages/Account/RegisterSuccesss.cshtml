@@ -1,0 +1,32 @@
+﻿@page
+@{
+    ViewData["Title"] = "RegisterSuccesss";
+}
+
+<div class="row" style="width:100%; margin:0; padding:0; background-image:url(../images/registerbackground.jpg); background-repeat:repeat; padding-bottom:30px;">
+    <div class="col-md-12" style="text-align:center;">
+
+        <br />
+
+        <img src="~/images/arrow3.png" class="center-block" width="600" height="100" />
+        <br />
+
+        <div class="panel panel-success center-block" style=" width:50%;">
+            <div class="panel-heading" style="font-weight:bold; font-family: Papyrus; font-size:20px; line-height:30px;">REGISTRATION SUCCESS</div>
+            <div class="panel-body">
+                <h3>Thank you for creating an account with us!</h3>
+                <p>Please wait while you're being redirected. . .</p>
+                <img src="~/images/registersuccess.png" alt="paperboy" class="img-responsive center-block" />
+            </div>
+        </div>
+
+
+        <script>
+            window.setTimeout(function () {
+                window.location.href = '../../Index';
+            }, 5000);
+        </script>
+    </div>
+</div>
+
+
